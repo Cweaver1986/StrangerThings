@@ -9,7 +9,7 @@ const NewPost = ({}) => {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [location, setLocation] = useState("");
-  const [willDeliver, setWillDeliver] = useState(true);
+  const [willDeliver, setWillDeliver] = useState(false);
 
   useEffect(() => {
     setToken(token);
@@ -66,6 +66,12 @@ const NewPost = ({}) => {
           type="text"
           placeholder="location"
           onChange={(event) => setLocation(event.target.value)}
+        ></input>
+        <label htmlFor="willDeliver">Will Deliver</label>
+        <input
+          value={willDeliver}
+          type="checkbox"
+          onChange={() => setWillDeliver(true)}
         ></input>
         <button type="submit">Create Post</button>
       </form>

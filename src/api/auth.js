@@ -107,3 +107,8 @@ export const newPost = async (
     console.error(error);
   }
 };
+
+export const Logout = () => {
+  localStorage.clear();
+  setToken();
+};
