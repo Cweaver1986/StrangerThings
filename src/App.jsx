@@ -6,6 +6,7 @@ import Posts from "./components/Posts";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import NewPost from "./components/NewPost";
+import Home from "./components/Home";
 import "./App.css";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/newpost" element={<NewPost />} />
+        <Route path="/" element={<Home />} />
       </Routes>
     </div>
   );

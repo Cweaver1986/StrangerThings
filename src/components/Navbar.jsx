@@ -18,6 +18,9 @@ const NavBar = () => {
         <NavLink className="navlink" to="/newpost">
           New Post
         </NavLink>
+        <NavLink className="navlink" to="/">
+          Home
+        </NavLink>
       </nav>
     </>
   );

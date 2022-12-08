@@ -4,16 +4,11 @@ import { newPost, fetchMe } from "../api/auth";
 import "./NewPost.css";
 
 const NewPost = ({}) => {
-  const [token, setToken] = useState(localStorage.getItem("token"));
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [location, setLocation] = useState("");
   const [willDeliver, setWillDeliver] = useState(false);
-
-  useEffect(() => {
-    setToken(token);
-  }, []);
 
   return (
     <div>
@@ -22,14 +17,12 @@ const NewPost = ({}) => {
           try {
             event.preventDefault();
             const post = await newPost(
-              token,
               title,
               description,
               price,
               willDeliver,
               location
             );
-            // setPost(post);
           } catch (error) {
             console.error(error);
           }

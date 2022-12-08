@@ -44,6 +44,7 @@ export const fetchMe = async (token) => {
     });
 
     const { data } = await response.json();
+    // console.log(data);
     return data;
   } catch (error) {
     console.error(error);
@@ -73,7 +74,6 @@ export const login = async (username, password) => {
 };
 
 export const newPost = async (
-  token,
   title,
   description,
   price,
@@ -81,6 +81,7 @@ export const newPost = async (
   location
 ) => {
   try {
+    const token = localStorage.getItem("token");
     const post = await fetch(
       `https://strangers-things.herokuapp.com/api/${cohort}/posts`,
       {

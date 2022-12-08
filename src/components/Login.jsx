@@ -41,9 +41,5 @@ const Login = ({}) => {
     </div>
   );
 };
-export const Logout = () => {
-  localStorage.clear();
-  setToken();
-};
 
 export default Login;
