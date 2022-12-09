@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { fetchMe } from "../api/auth";
+import { fetchMe, Logout } from "../api/auth";
 import "./Home.css";
 
-const Home = () => {
+const Home = ({ token, setToken }) => {
   const [posts, setPosts] = useState([]);
   const [messages, setMessages] = useState([]);
-  const token = localStorage.getItem("token");
 
   useEffect(() => {
     const getAllPosts = async () => {
@@ -14,7 +13,7 @@ const Home = () => {
       setPosts(response.posts);
       setMessages(response.messages);
     };
-    getAllPosts();
+    if (token) getAllPosts();
   }, []);
 
   let postsToMap = posts.map((post, index) => {
@@ -42,6 +41,7 @@ const Home = () => {
   return (
     <>
       <h1>Home</h1>
+      {/* <button onSubmit={Logout()}>Logout</button> */}
       <h2>Posts</h2>
       <div>{postsToMap}</div>
       <h2>Messages</h2>

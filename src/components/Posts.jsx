@@ -1,19 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { getPosts } from "../api/auth";
+import React from "react";
 import "./Posts.css";
 
-const Posts = () => {
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    const getAllPosts = async () => {
-      const response = await getPosts();
-      // console.log(response);
-      setPosts(response);
-    };
-    getAllPosts();
-  }, []);
-
+const Posts = ({ posts, setPosts }) => {
   let postsToMap = posts.map((post, index) => {
     return (
       <div className="posts" key={index}>

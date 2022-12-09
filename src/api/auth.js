@@ -5,6 +5,7 @@ export const getPosts = async () => {
   try {
     const response = await fetch(`${baseURL}${cohort}/posts`);
     const data = await response.json();
+    console.log(data);
     return data.data.posts;
   } catch (error) {
     console.error(error);
@@ -102,7 +103,7 @@ export const newPost = async (
       }
     );
     const data = await post.json();
-    console.log(data);
+    // console.log(data);
     return data;
   } catch (error) {
     console.error(error);
@@ -112,4 +113,29 @@ export const newPost = async (
 export const Logout = () => {
   localStorage.clear();
   setToken();
+};
+
+export const newMessage = async (content, token, postId) => {
+  try {
+    const message = await fetch(
+      `${baseURL}${cohort}/posts/${postId}/messages`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          message: {
+            content,
+          },
+        }),
+      }
+    );
+    const data = await message.json();
+    console.log("inside newMessage", data);
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
 };

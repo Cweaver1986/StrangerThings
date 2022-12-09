@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { login } from "../api/auth";
 
-const Login = ({}) => {
+const Login = () => {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
@@ -10,10 +10,8 @@ const Login = ({}) => {
       <form
         onSubmit={async (event) => {
           event.preventDefault();
-          console.log(username, password);
           const data = await login(username, password);
           const token = data.data.token;
-          console.log(token);
           localStorage.setItem("token", token);
         }}
       >

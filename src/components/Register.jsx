@@ -2,22 +2,9 @@ import React, { useState, useEffect } from "react";
 import { fetchMe } from "../api/auth";
 import { registerUser } from "../api/auth";
 
-const Register = () => {
-  const [token, setToken] = useState(localStorage.getItem("token"));
-  const [user, setUser] = useState({});
+const Register = ({ token, setToken, user, setUser }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
-  useEffect(() => {
-    const getMe = async () => {
-      const data = await fetchMe(token);
-      setUser(data);
-      // console.log("user", user);
-    };
-    if (token) {
-      getMe();
-    }
-  }, [token]);
 
   return (
     <div>
@@ -26,7 +13,7 @@ const Register = () => {
         onSubmit={async (event) => {
           try {
             event.preventDefault();
-            console.log(password, username);
+            // console.log(password, username);
             const token = await registerUser(username, password);
             setToken(token);
             localStorage.setItem("token", token);

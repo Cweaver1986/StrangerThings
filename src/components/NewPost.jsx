@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { newPost, fetchMe } from "../api/auth";
 import "./NewPost.css";
 
-const NewPost = ({}) => {
+const NewPost = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
