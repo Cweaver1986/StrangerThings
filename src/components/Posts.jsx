@@ -6,9 +6,14 @@ import "./Posts.css";
 const Posts = ({ posts, setPosts, token }) => {
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
+  const username = localStorage.getItem("username");
+
+  console.log(username);
+
   let postsToMap = posts.map((post, index) => {
+    // console.log(post);
     return (
-      <div className="posts" key={index}>
+      <div className="posts" key={post._id}>
         <h2>{post.title}</h2>
         <p>{post.description}</p>
         <p>{post.price}</p>

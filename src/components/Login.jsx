@@ -11,7 +11,9 @@ const Login = () => {
         onSubmit={async (event) => {
           event.preventDefault();
           const data = await login(username, password);
+          console.log(username);
           const token = data.data.token;
+          localStorage.setItem("username", username);
           localStorage.setItem("token", token);
         }}
       >

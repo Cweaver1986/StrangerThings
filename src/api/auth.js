@@ -6,7 +6,7 @@ export const getPosts = async () => {
   try {
     const response = await fetch(`${baseURL}${cohort}/posts`);
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     return data.data.posts;
   } catch (error) {
     console.error(error);
@@ -68,7 +68,7 @@ export const login = async (username, password) => {
       }),
     });
     const data = await verify.json();
-    console.log(data);
+    // console.log(data);
     return data;
   } catch (error) {
     console.error(error);
