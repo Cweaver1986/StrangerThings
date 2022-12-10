@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate, NavLink } from "react-router-dom";
+import Messages from "./Messages";
 import "./Posts.css";
 
-const Posts = ({ posts, setPosts }) => {
+const Posts = ({ posts, setPosts, token }) => {
+  const [show, setShow] = useState(false);
+  const navigate = useNavigate();
   let postsToMap = posts.map((post, index) => {
     return (
       <div className="posts" key={index}>
@@ -10,6 +14,17 @@ const Posts = ({ posts, setPosts }) => {
         <p>{post.price}</p>
         <p>{post.location}</p>
         <p>{post.willDeliver}</p>
+        {show ? (
+          <Messages token={token} post={post} show={show} setShow={setShow} />
+        ) : (
+          <button
+            onClick={() => {
+              setShow(!show);
+            }}
+          >
+            Message
+          </button>
+        )}
       </div>
     );
   });

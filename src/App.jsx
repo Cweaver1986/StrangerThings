@@ -9,6 +9,7 @@ import NewPost from "./components/NewPost";
 import Home from "./components/Home";
 import "./App.css";
 import Messages from "./components/Messages";
+import SinglePost from "./components/SinglePost";
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -33,7 +34,7 @@ function App() {
       setPosts(response);
     };
     getAllPosts();
-  }, []);
+  }, [token]);
 
   return (
     <div className="App">
@@ -58,6 +59,7 @@ function App() {
         <Route path="/newpost" element={<NewPost />} />
         <Route path="/messages" element={<Messages token={token} />} />
         <Route path="/" element={<Home token={token} setToken={setToken} />} />
+        <Route path="/singlepost" element={<SinglePost posts={posts} />} />
       </Routes>
     </div>
   );

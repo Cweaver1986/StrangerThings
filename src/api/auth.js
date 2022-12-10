@@ -1,5 +1,6 @@
 const baseURL = `https://strangers-things.herokuapp.com/api/`;
 const cohort = `2211-FTB-ET-WEB-FT`;
+const token = localStorage.token;
 
 export const getPosts = async () => {
   try {
@@ -112,7 +113,6 @@ export const newPost = async (
 
 export const Logout = () => {
   localStorage.clear();
-  setToken();
 };
 
 export const newMessage = async (content, token, postId) => {

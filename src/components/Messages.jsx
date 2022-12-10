@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { newMessage } from "../api/auth";
+import "./Messages.css";
 
-const Messages = ({ token }) => {
+const Messages = ({ post }) => {
   const [content, setContent] = useState("");
-  const [postId, setPostId] = useState("");
-  //   const postId = "638ea173e982fb00176ae0bd";
+  const postId = post._id;
+  const token = localStorage.token;
 
   return (
     <div>
@@ -19,14 +20,16 @@ const Messages = ({ token }) => {
           }
         }}
       >
-        <h1>Send Message</h1>
         <input
+          className="msginput"
           value={content}
           type="text"
           placeholder="Message"
           onChange={(event) => setContent(event.target.value)}
         ></input>
-        <button type="submit">Create Message</button>
+        <button className="msgbutton" type="submit">
+          Create Message
+        </button>
       </form>
     </div>
   );

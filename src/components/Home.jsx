@@ -14,7 +14,9 @@ const Home = ({ token, setToken }) => {
       setMessages(response.messages);
     };
     if (token) getAllPosts();
-  }, []);
+  }, [token]);
+
+  //   console.log(posts);
 
   let postsToMap = posts.map((post, index) => {
     return (
@@ -41,7 +43,9 @@ const Home = ({ token, setToken }) => {
   return (
     <>
       <h1>Home</h1>
-      {/* <button onSubmit={Logout()}>Logout</button> */}
+      <form onSubmit={Logout}>
+        <button type="submit">Logout</button>
+      </form>
       <h2>Posts</h2>
       <div>{postsToMap}</div>
       <h2>Messages</h2>
