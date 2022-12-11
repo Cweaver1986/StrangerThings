@@ -12,7 +12,10 @@ const Posts = ({ posts }) => {
     return (
       <div className="posts" key={index}>
         <h2>{post.title}</h2>
-        <h3>{post.author.username}</h3>
+        <h3>Author : {post.author.username}</h3>
+        <p>Description : {post.description}</p>
+        <p>Price : {post.price}</p>
+        <p>Location : {post.location}</p>
         <button
           onClick={() => {
             navigate(`/posts/${post._id}`);
@@ -20,10 +23,6 @@ const Posts = ({ posts }) => {
         >
           See Post!
         </button>
-        <p>{post.description}</p>
-        <p>{post.price}</p>
-        <p>{post.location}</p>
-        <p>{}</p>
       </div>
     );
   });
