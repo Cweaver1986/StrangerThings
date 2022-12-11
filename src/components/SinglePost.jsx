@@ -12,7 +12,7 @@ const SinglePost = ({ posts }) => {
   const [[post], setPost] = useState(posts.filter((post) => post._id === id));
   const token = localStorage.token;
 
-  // console.log(post);
+  console.log(post);
   return post && post._id ? (
     <>
       <h1>Post</h1>

@@ -33,7 +33,6 @@ const EditPost = ({ post }) => {
         <input
           value={title}
           type="text"
-          required
           placeholder="title"
           onChange={(event) => setTitle(event.target.value)}
         ></input>
@@ -41,7 +40,6 @@ const EditPost = ({ post }) => {
         <input
           value={description}
           type="text"
-          required
           placeholder="description"
           onChange={(event) => setDescription(event.target.value)}
         ></input>
@@ -49,7 +47,6 @@ const EditPost = ({ post }) => {
         <input
           value={price}
           type="text"
-          required
           placeholder="price"
           onChange={(event) => setPrice(event.target.value)}
         ></input>

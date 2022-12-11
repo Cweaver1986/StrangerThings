@@ -46,7 +46,6 @@ export const fetchMe = async (token) => {
     });
 
     const { data } = await response.json();
-    // console.log(data);
     return data;
   } catch (error) {
     console.error(error);
@@ -68,7 +67,6 @@ export const login = async (username, password) => {
       }),
     });
     const data = await verify.json();
-    // console.log(data);
     return data;
   } catch (error) {
     console.error(error);
@@ -104,7 +102,6 @@ export const newPost = async (
       }
     );
     const data = await post.json();
-    // console.log(data);
     return data;
   } catch (error) {
     console.error(error);
@@ -133,7 +130,6 @@ export const newMessage = async (content, token, postId) => {
       }
     );
     const data = await message.json();
-    console.log("inside newMessage", data);
     return data;
   } catch (error) {
     console.error(error);
@@ -170,7 +166,6 @@ export const editPost = async (
       }
     );
     const data = await post.json();
-    console.log("editPost", data);
     return data;
   } catch (error) {
     console.error(error);
