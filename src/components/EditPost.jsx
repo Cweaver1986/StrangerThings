@@ -1,14 +1,14 @@
 import React from "react";
 import { useState } from "react";
-import { newPost } from "../api/auth";
-import "./NewPost.css";
+import { editPost } from "../api/auth";
 
-const NewPost = () => {
+const EditPost = ({ post }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [location, setLocation] = useState("");
   const [willDeliver, setWillDeliver] = useState(false);
+  const postId = post._id;
 
   return (
     <div>
@@ -16,7 +16,8 @@ const NewPost = () => {
         onSubmit={async (event) => {
           try {
             event.preventDefault();
-            const post = await newPost(
+            const post = await editPost(
+              postId,
               title,
               description,
               price,
@@ -28,7 +29,6 @@ const NewPost = () => {
           }
         }}
       >
-        <h1>Add New Post</h1>
         <label htmlFor="title">Title</label>
         <input
           value={title}
@@ -66,10 +66,10 @@ const NewPost = () => {
           type="checkbox"
           onChange={() => setWillDeliver(!willDeliver)}
         ></input>
-        <button type="submit">Create Post</button>
+        <button type="submit">Edit Post</button>
       </form>
     </div>
   );
 };
 
-export default NewPost;
+export default EditPost;

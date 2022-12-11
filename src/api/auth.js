@@ -6,7 +6,7 @@ export const getPosts = async () => {
   try {
     const response = await fetch(`${baseURL}${cohort}/posts`);
     const data = await response.json();
-    // console.log(data);
+    console.log(data);
     return data.data.posts;
   } catch (error) {
     console.error(error);
@@ -139,3 +139,61 @@ export const newMessage = async (content, token, postId) => {
     console.error(error);
   }
 };
+
+export const editPost = async (
+  postId,
+  title,
+  description,
+  price,
+  willDeliver,
+  location
+) => {
+  try {
+    const token = localStorage.getItem("token");
+    const post = await fetch(
+      `https://strangers-things.herokuapp.com/api/${cohort}/posts/${postId}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          post: {
+            title,
+            description,
+            price,
+            willDeliver,
+            location,
+          },
+        }),
+      }
+    );
+    const data = await post.json();
+    console.log("editPost", data);
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export async function deletePostById(id) {
+  const token = localStorage.token;
+  try {
+    const response = await fetch(`${baseURL}${cohort}/posts/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await response.json();
+    if (data.error) throw data.error;
+    return data;
+  } catch (error) {
+    console.error(
+      "Sorry we are having issues deleting post from the API.",
+      error
+    );
+  }
+}

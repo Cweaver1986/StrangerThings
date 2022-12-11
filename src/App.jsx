@@ -7,9 +7,10 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import NewPost from "./components/NewPost";
 import Home from "./components/Home";
-import "./App.css";
 import Messages from "./components/Messages";
 import SinglePost from "./components/SinglePost";
+import EditPost from "./components/EditPost";
+import "./App.css";
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -59,7 +60,8 @@ function App() {
         <Route path="/newpost" element={<NewPost />} />
         <Route path="/messages" element={<Messages token={token} />} />
         <Route path="/" element={<Home token={token} setToken={setToken} />} />
-        <Route path="/singlepost" element={<SinglePost posts={posts} />} />
+        <Route path="/posts/:id" element={<SinglePost posts={posts} />} />
+        <Route path="/editpost" element={<EditPost token={token} />} />
       </Routes>
     </div>
   );
